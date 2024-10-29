@@ -1,31 +1,29 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
+import styles from './style';
 
 const TransactionDetailScreen = ({ route }) => {
     const { transaction } = route.params;
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Transaction Detail</Text>
-            <Text>{`Transaction Name: ${transaction.name}`}</Text>
-            <Text>{`Amount: $${transaction.amount}`}</Text>
-            <Text>{`Date: ${transaction.date}`}</Text>
-            <Text>{`Type: ${transaction.type}`}</Text>
-            <Text>{`Payment Method: ${transaction.paymentMethod}`}</Text>
-            <Text>{`Status: ${transaction.status}`}</Text>
+            <Text style={styles.title}>Transaction Details</Text>
+            <Text style={styles.label}>Name</Text>
+            <Text style={styles.value}>{transaction.name}</Text>
+            <Text style={styles.label}>Amount</Text>
+            <Text style={styles.value}>${transaction.amount.toFixed(2)}</Text>
+            <Text style={styles.label}>Date</Text>
+            <Text style={styles.value}>{transaction.date}</Text>
+            <Text style={styles.label}>Type</Text>
+            <Text style={styles.value}>{transaction.type}</Text>
+            <Text style={styles.label}>Category</Text>
+            <Text style={styles.value}>{transaction.category}</Text>
+            <Text style={styles.label}>Payment Method</Text>
+            <Text style={styles.value}>{transaction.paymentMethod}</Text>
+            <Text style={styles.label}>Status</Text>
+            <Text style={styles.value}>{transaction.status}</Text>
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 20,
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 20,
-    },
-});
 
 export default TransactionDetailScreen;
