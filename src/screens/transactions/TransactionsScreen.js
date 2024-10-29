@@ -1,30 +1,15 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-
-const transactions = [
-    { id: '1', name: 'Groceries', amount: 50, date: '2024-10-29' },
-    { id: '2', name: 'Rent', amount: 1200, date: '2024-10-01' },
-    { id: '3', name: 'Utilities', amount: 100, date: '2024-10-15' },
-];
+import { View, FlatList, StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
+import Transaction from '../../components/transaction/Transaction';
 
 const TransactionsScreen = () => {
-    const navigation = useNavigation();
+    const transactions = useSelector((state) => state.transactions);
 
-    const renderItem = ({ item }) => (
-        <TouchableOpacity
-            onPress={() => navigation.navigate('TransactionDetail', { transaction: item })}
-        >
-            <View style={{ padding: 20 }}>
-                <Text>{item.name}</Text>
-                <Text>{`Amount: $${item.amount}`}</Text>
-                <Text>{item.date}</Text>
-            </View>
-        </TouchableOpacity>
-    );
+    const renderItem = ({ item }) => <Transaction transaction={item} />;
 
     return (
-        <View>
+        <View style={styles.container}>
             <FlatList
                 data={transactions}
                 keyExtractor={(item) => item.id}
@@ -33,5 +18,12 @@ const TransactionsScreen = () => {
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 10,
+    },
+});
 
 export default TransactionsScreen;

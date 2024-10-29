@@ -17,7 +17,7 @@ const TransactionsStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Transactions"
+        name="TransactionsList"
         component={TransactionsScreen}
         options={{ title: 'Transaction List' }}
       />
