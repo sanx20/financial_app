@@ -31,7 +31,14 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Tab.Navigator screenOptions={{ headerShown: false }}>
+        <Tab.Navigator
+          screenOptions={{
+            headerShown: false,
+            tabBarStyle: { backgroundColor: '#121212' },
+            tabBarActiveTintColor: '#FFD700',
+            tabBarInactiveTintColor: '#888',
+          }}
+        >
           <Tab.Screen
             name="Transactions"
             component={TransactionsStack}

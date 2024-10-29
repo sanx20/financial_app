@@ -1,9 +1,15 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import styles from './style';
 
 const TransactionDetailScreen = ({ route }) => {
     const { transaction } = route.params;
+    const navigation = useNavigation();
+
+    const handleEdit = () => {
+        navigation.navigate('AddEditTransaction', { transaction });
+    };
 
     return (
         <View style={styles.container}>
@@ -22,6 +28,8 @@ const TransactionDetailScreen = ({ route }) => {
             <Text style={styles.value}>{transaction.paymentMethod}</Text>
             <Text style={styles.label}>Status</Text>
             <Text style={styles.value}>{transaction.status}</Text>
+
+            <Button title="Edit Transaction" onPress={handleEdit} />
         </View>
     );
 };

@@ -7,20 +7,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#121212',
     },
     input: {
-        backgroundColor: '#282828',
+        backgroundColor: '#1E1E1E',
         color: '#ffffff',
         padding: 10,
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: '#444',
+        borderColor: '#333333',
         marginBottom: 10,
     },
     dropdownButton: {
-        backgroundColor: '#282828',
+        backgroundColor: '#1E1E1E',
         padding: 15,
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: '#444',
+        borderColor: '#333333',
         marginBottom: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         color: '#ffffff',
     },
     modalContainer: {
-        backgroundColor: '#282828',
+        backgroundColor: '#1E1E1E',
         padding: 20,
         borderRadius: 10,
         alignItems: 'center',
@@ -43,15 +43,35 @@ const styles = StyleSheet.create({
     modalItem: {
         padding: 10,
         borderBottomWidth: 1,
-        borderBottomColor: '#444',
+        borderBottomColor: '#333333',
     },
     modalText: {
         color: '#ffffff',
     },
+    transactionContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: 20,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc',
+        backgroundColor: '#333',
+        marginBottom: 10,
+        borderRadius: 8,
+    },
+    transactionName: {
+        fontWeight: 'bold',
+        fontSize: 18,
+        color: '#FFD700',
+    },
+    text: {
+        color: '#ffffff',
+        marginBottom: 5,
+    },
     addButton: {
         position: 'absolute',
-        bottom: 20,
-        right: 20,
+        bottom: 30,
+        right: 30,
     },
 });
 

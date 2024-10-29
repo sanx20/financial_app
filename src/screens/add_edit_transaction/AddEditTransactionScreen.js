@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button } from 'react-native';
+import { View, TextInput, Button, Alert } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { addTransaction, updateTransaction } from '../../redux/transactionSlice';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -23,6 +23,11 @@ const AddEditTransactionScreen = () => {
     const [status, setStatus] = useState(transactionToEdit?.status || '');
 
     const handleSubmit = () => {
+        if (!name || !amount || !date || !type || !category || !paymentMethod || !status) {
+            Alert.alert('Validation Error', 'Please fill all the fields.');
+            return;
+        }
+
         if (isEditing) {
             dispatch(updateTransaction({
                 id: transactionToEdit.id,
@@ -38,13 +43,14 @@ const AddEditTransactionScreen = () => {
 
     return (
         <View style={styles.container}>
-            <TextInput value={name} onChangeText={setName} placeholder="Transaction Name" style={styles.input} />
-            <TextInput value={amount} onChangeText={setAmount} placeholder="Amount" keyboardType="numeric" style={styles.input} />
-            <TextInput value={date} onChangeText={setDate} placeholder="Date (YYYY-MM-DD)" style={styles.input} />
-            <TextInput value={type} onChangeText={setType} placeholder="Type (Income/Expense)" style={styles.input} />
-            <TextInput value={category} onChangeText={setCategory} placeholder="Category" style={styles.input} />
-            <TextInput value={paymentMethod} onChangeText={setPaymentMethod} placeholder="Payment Method" style={styles.input} />
-            <TextInput value={status} onChangeText={setStatus} placeholder="Status" style={styles.input} />
+            <TextInput value={name} onChangeText={setName} placeholder="Transaction Name" style={styles.input} placeholderTextColor="#888" />
+            <TextInput value={amount} onChangeText={setAmount} placeholder="Amount" keyboardType="numeric" style={styles.input} placeholderTextColor="#888" />
+            <TextInput value={date} onChangeText={setDate} placeholder="Date (YYYY-MM-DD)" style={styles.input} placeholderTextColor="#888" />
+            <TextInput value={type} onChangeText={setType} placeholder="Type (Income/Expense)" style={styles.input} placeholderTextColor="#888" />
+            <TextInput value={category} onChangeText={setCategory} placeholder="Category" style={styles.input} placeholderTextColor="#888" />
+            <TextInput value={paymentMethod} onChangeText={setPaymentMethod} placeholder="Payment Method" style={styles.input} placeholderTextColor="#888" />
+            <TextInput value={status} onChangeText={setStatus} placeholder="Status" style={styles.input} placeholderTextColor="#888" />
+
             <Button title={isEditing ? 'Update Transaction' : 'Add Transaction'} onPress={handleSubmit} />
         </View>
     );
